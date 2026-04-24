@@ -88,10 +88,10 @@ sequential run. No manual intervention is needed between cells.
 **Services sector definition.** Services is defined as all sectors that are not Agriculture,
 Mining, or Manufacturing. The exact columns summed from each dataset are:
 
-| Dataset    | Columns summed                                                                                                                   |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 10-Sector  | Utilities, Construction, Trade restaurants & hotels, Transport storage & communication, Government services, Community services |
-| ETD        | Utilities, Construction, Trade services, Transport services, Government services, Other services                                 |
+| Dataset   | Columns summed                                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 10-Sector | Utilities, Construction, Trade restaurants & hotels, Transport storage & communication, Government services, Community services |
+| ETD       | Utilities, Construction, Trade services, Transport services, Government services, Other services                                |
 
 **Data splicing logic.** The 10-Sector series (valued at constant 2005 USD) is the primary
 source. For each country, the splice point is the last year with a non-missing 10-Sector
@@ -117,27 +117,27 @@ country for which the Hamilton filter produces no valid cycle values.
 
 **Key outputs.**
 
-| File                                            | Content                                                                              |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `output/tables/all_ar1_productivity.tex`        | LaTeX table of $\hat\rho$, se$(\hat\rho)$, $\hat\sigma_\varepsilon$, $\hat\sigma^2_\varepsilon$ for every country (both filters) plus pooled row |
-| `output/tables/all_prod_ar1_params.json`        | Machine-readable AR(1) parameters: pooled and per-country, for both filters          |
-| `output/tables/all_prod_data.xlsx`              | Panel dataset with spliced productivity level and both detrended cycles per country   |
-| `output/figures/all_prod_growth_{1..6}.pdf`     | Six panels comparing annual productivity growth rates from the two source datasets    |
-| `output/figures/all_productivity_{1..6}.pdf`    | Six panels of spliced productivity levels in 2005 USD per worker                     |
-| `output/figures/all_productivity_detrended_{1..6}.pdf` | Six panels of Hamilton and HP cycles overlaid per country                    |
-| `output/figures/all_ar1_diagnostics_hamilton.pdf` | Pooled AR(1) residual diagnostics for Hamilton filter (residual plot, ACF, PACF)   |
-| `output/figures/all_ar1_diagnostics_hp.pdf`    | Pooled AR(1) residual diagnostics for HP filter (residual plot, ACF, PACF)           |
+| File                                                   | Content                                                                                                                                          |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `output/tables/all_ar1_productivity.tex`               | LaTeX table of $\hat\rho$, se$(\hat\rho)$, $\hat\sigma_\varepsilon$, $\hat\sigma^2_\varepsilon$ for every country (both filters) plus pooled row |
+| `output/tables/all_prod_ar1_params.json`               | Machine-readable AR(1) parameters: pooled and per-country, for both filters                                                                      |
+| `output/tables/all_prod_data.xlsx`                     | Panel dataset with spliced productivity level and both detrended cycles per country                                                              |
+| `output/figures/all_prod_growth_{1..6}.pdf`            | Six panels comparing annual productivity growth rates from the two source datasets                                                               |
+| `output/figures/all_productivity_{1..6}.pdf`           | Six panels of spliced productivity levels in 2005 USD per worker                                                                                 |
+| `output/figures/all_productivity_detrended_{1..6}.pdf` | Six panels of Hamilton and HP cycles overlaid per country                                                                                        |
+| `output/figures/all_ar1_diagnostics_hamilton.pdf`      | Pooled AR(1) residual diagnostics for Hamilton filter (residual plot, ACF, PACF)                                                                 |
+| `output/figures/all_ar1_diagnostics_hp.pdf`            | Pooled AR(1) residual diagnostics for HP filter (residual plot, ACF, PACF)                                                                       |
 
 ---
 
 ## 4. Input Data
 
-| File                    | Variable  | Description                               | Source                           | Period    | Coverage                |
-| ----------------------- | --------- | ----------------------------------------- | -------------------------------- | --------- | ----------------------- |
-| `10sd_jan15_2014.xlsx`  | `VA_Q05`  | Real value added, constant 2005 USD (millions) | 10-Sector Database (Timmer et al., GGDC) | ~1950–2011 | Up to 42 countries |
-| `10sd_jan15_2014.xlsx`  | `EMP`     | Employment (thousands of persons)         | 10-Sector Database (Timmer et al., GGDC) | ~1950–2011 | Up to 42 countries |
-| `ETD_230918.xlsx`       | `VA_Q15`  | Real value added, constant 2015 USD (millions) | Economic Transformation Database (GGDC/UNU-WIDER) | 1990–2018 | Up to 51 countries |
-| `ETD_230918.xlsx`       | `EMP`     | Employment (thousands of persons)         | Economic Transformation Database (GGDC/UNU-WIDER) | 1990–2018 | Up to 51 countries |
+| File                   | Variable | Description                                    | Source                                            | Period     | Coverage           |
+| ---------------------- | -------- | ---------------------------------------------- | ------------------------------------------------- | ---------- | ------------------ |
+| `10sd_jan15_2014.xlsx` | `VA_Q05` | Real value added, constant 2005 USD (millions) | 10-Sector Database (Timmer et al., GGDC)          | ~1950–2011 | Up to 42 countries |
+| `10sd_jan15_2014.xlsx` | `EMP`    | Employment (thousands of persons)              | 10-Sector Database (Timmer et al., GGDC)          | ~1950–2011 | Up to 42 countries |
+| `ETD_230918.xlsx`      | `VA_Q15` | Real value added, constant 2015 USD (millions) | Economic Transformation Database (GGDC/UNU-WIDER) | 1990–2018  | Up to 51 countries |
+| `ETD_230918.xlsx`      | `EMP`    | Employment (thousands of persons)              | Economic Transformation Database (GGDC/UNU-WIDER) | 1990–2018  | Up to 51 countries |
 
 Both files must be placed in `data/raw/` exactly as named. The notebook reads the sheet
 named `"dataset"` from `10sd_jan15_2014.xlsx` and the sheet named `"Data"` from
@@ -156,33 +156,33 @@ listed in Section 3. Zero employment values are replaced with `NaN` before divis
 
 ### Processed datasets
 
-| File                              | Produced by               | Content                                                               |
-| --------------------------------- | ------------------------- | --------------------------------------------------------------------- |
+| File                               | Produced by                | Content                                                                         |
+| ---------------------------------- | -------------------------- | ------------------------------------------------------------------------------- |
 | `output/tables/all_prod_data.xlsx` | `all_countries_prod.ipynb` | Country, Year, spliced productivity (2005 USD/worker), Hamilton cycle, HP cycle |
 
 ### LaTeX tables
 
-| File                                     | Produced by               | Content                                                                         |
-| ---------------------------------------- | ------------------------- | ------------------------------------------------------------------------------- |
+| File                                     | Produced by                | Content                                                                                                                           |
+| ---------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `output/tables/all_ar1_productivity.tex` | `all_countries_prod.ipynb` | AR(1) estimates ($\hat\rho$, se, $\hat\sigma_\varepsilon$, $\hat\sigma^2_\varepsilon$) for all countries and pooled, both filters |
 
 ### JSON parameters
 
-| File                                      | Produced by               | Content                                                                         |
-| ----------------------------------------- | ------------------------- | ------------------------------------------------------------------------------- |
-| `output/tables/all_prod_ar1_params.json`  | `all_countries_prod.ipynb` | Nested dict: `all_countries → {hamilton, hp} → {pooled, by_country}` with `rho`, `se_rho`, `sigma`, `var`, `intercept` (pooled only), `yr_min`, `yr_max`, `n_obs` |
+| File                                     | Produced by                | Content                                                                                                                                                           |
+| ---------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `output/tables/all_prod_ar1_params.json` | `all_countries_prod.ipynb` | Nested dict: `all_countries → {hamilton, hp} → {pooled, by_country}` with `rho`, `se_rho`, `sigma`, `var`, `intercept` (pooled only), `yr_min`, `yr_max`, `n_obs` |
 
 ### Figures
 
 All figures are saved as PDF at 300 dpi.
 
-| File                                            | Content                                                                 |
-| ----------------------------------------------- | ----------------------------------------------------------------------- |
-| `output/figures/all_prod_growth_{1..6}.pdf`     | Annual productivity growth rates: 10-Sector (solid) vs. ETD (dashed)   |
-| `output/figures/all_productivity_{1..6}.pdf`    | Spliced productivity levels in 2005 USD per worker                      |
-| `output/figures/all_productivity_detrended_{1..6}.pdf` | Hamilton cycle (solid) and HP cycle (dashed) per country         |
-| `output/figures/all_ar1_diagnostics_hamilton.pdf` | Pooled residuals, ACF, PACF — Hamilton filter                         |
-| `output/figures/all_ar1_diagnostics_hp.pdf`    | Pooled residuals, ACF, PACF — HP filter                                 |
+| File                                                   | Content                                                              |
+| ------------------------------------------------------ | -------------------------------------------------------------------- |
+| `output/figures/all_prod_growth_{1..6}.pdf`            | Annual productivity growth rates: 10-Sector (solid) vs. ETD (dashed) |
+| `output/figures/all_productivity_{1..6}.pdf`           | Spliced productivity levels in 2005 USD per worker                   |
+| `output/figures/all_productivity_detrended_{1..6}.pdf` | Hamilton cycle (solid) and HP cycle (dashed) per country             |
+| `output/figures/all_ar1_diagnostics_hamilton.pdf`      | Pooled residuals, ACF, PACF — Hamilton filter                        |
+| `output/figures/all_ar1_diagnostics_hp.pdf`            | Pooled residuals, ACF, PACF — HP filter                              |
 
 The six-panel figure sets display six countries each (`CHUNK_SIZE = 6`), in the alphabetical
 ISO3 order of the final sample.
@@ -191,16 +191,16 @@ ISO3 order of the final sample.
 
 ## 6. Software Requirements
 
-| Package        | Tested version | Role                                                        |
-| -------------- | -------------- | ----------------------------------------------------------- |
-| `python`       | 3.10+          | Runtime                                                     |
-| `pandas`       | —              | Data loading, merging, panel construction                   |
-| `numpy`        | —              | Numerical operations, array handling                        |
-| `matplotlib`   | —              | Figure production                                           |
-| `statsmodels`  | —              | `AutoReg` (per-country AR(1)), `OLS` (pooled), `hpfilter`, ACF/PACF plots |
-| `scipy`        | —              | Sparse matrix efficiency (warning suppression only)         |
-| `openpyxl`     | —              | Writing `.xlsx` output via `pandas.to_excel`                |
-| `jupyter`      | —              | Notebook runtime                                            |
+| Package       | Tested version | Role                                                                      |
+| ------------- | -------------- | ------------------------------------------------------------------------- |
+| `python`      | 3.10+          | Runtime                                                                   |
+| `pandas`      | —              | Data loading, merging, panel construction                                 |
+| `numpy`       | —              | Numerical operations, array handling                                      |
+| `matplotlib`  | —              | Figure production                                                         |
+| `statsmodels` | —              | `AutoReg` (per-country AR(1)), `OLS` (pooled), `hpfilter`, ACF/PACF plots |
+| `scipy`       | —              | Sparse matrix efficiency (warning suppression only)                       |
+| `openpyxl`    | —              | Writing `.xlsx` output via `pandas.to_excel`                              |
+| `jupyter`     | —              | Notebook runtime                                                          |
 
 Install all dependencies with:
 
