@@ -1,0 +1,51 @@
+{
+  "all_countries": {
+    "countries": [
+      "ARG",
+      "BOL",
+      "BRA",
+      "BWA",
+      "CHL",
+      "CHN",
+      "COL",
+      "CRI",
+      "EGY",
+      "ETH",
+      "GHA",
+      "HKG",
+      "IDN",
+      "IND",
+      "JPN",
+      "KEN",
+      "KOR",
+      "MEX",
+      "MUS",
+      "MWI",
+      "MYS",
+      "NGA",
+      "PER",
+      "PHL",
+      "SEN",
+      "SGP",
+      "THA",
+      "TWN",
+      "TZA",
+      "ZAF",
+      "ZMB"
+    ],
+    "hamilton": {
+      "rho": 0.4792630761773083,
+      "intercept": -0.0001402180015227949,
+      "var": 0.003093906750823222,
+      "sigma": 0.055622897720482185,
+      "n_obs": 1617
+    },
+    "hp": {
+      "rho": 0.5486602597998711,
+      "intercept": -0.00019424763179987222,
+      "var": 0.0014000950495466043,
+      "sigma": 0.0374178439991751,
+      "n_obs": 1772
+    }
+  }
+}
